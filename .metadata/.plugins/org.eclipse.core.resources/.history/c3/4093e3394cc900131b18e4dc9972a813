@@ -1,0 +1,25 @@
+import java.io.IOException;
+
+public class Lemon {
+
+	public static void main(String[] args) throws IOException {
+		String a,b,c,d,t;
+		BasicFileIo fa = new BasicFileIo();
+		BasicFileIo fb = new BasicFileIo();
+		fa.openFile(fa.INPUT, "a");
+		fb.openFile(fb.INPUT, "b");
+		a = fa.readString();
+		t = a;
+		b = fb.readString();
+		int i,j;
+		c = a.trim(); 
+		d = b.trim();
+		System.out.println(c);
+		fa.closeFile();
+	//	for(i=0;i<a.length();i++){
+	//		if(a.charAt(i)==' '||a.charAt(i)=='\t')
+	//	}
+
+	}
+
+}

@@ -1,0 +1,14 @@
+
+
+public class Lemon {
+
+	public static void main(String[] args) {
+		String a,b;
+		BasicFileIo fa = new BasicFileIo();
+		BasicFileIo fb = new BasicFileIo();
+	//	fa.openFile(, a);
+		//a = fa.readString();
+
+	}
+
+}

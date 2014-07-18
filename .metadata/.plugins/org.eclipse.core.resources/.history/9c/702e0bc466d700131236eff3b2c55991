@@ -1,0 +1,93 @@
+
+public class Board {
+	
+	private static ChessPiece[][] boar;
+	private static ChessPiece[] che = new ChessPiece[40];
+	private static int c;
+	
+	static void init() {
+		boar = new ChessPiece[15][15];
+		c = 0;
+		che[c] = new Jiang(0, 4, "Shuai", 1);
+		boar[0][4] = che[c++];
+		che[c] = new Jiang(9, 4, "Jiang", 0);
+		boar[9][4] = che[c++];
+
+		che[c] = new Shi(0, 3, "HeiSh", 0);
+		boar[0][3] = che[c++];
+		che[c] = new Shi(0, 5, "HeiSh", 0);
+		boar[0][5] = che[c++];
+		che[c] = new Shi(9, 3, "HonSh", 1);
+		boar[9][3] = che[c++];
+		che[c] = new Shi(9, 5, "HonSh", 1);
+		boar[9][5] = che[c++];
+
+		che[c] = new Xiang(0, 2, "HeiXi", 0);
+		boar[0][2] = che[c++];
+		che[c] = new Xiang(0, 6, "HeiXi", 0);
+		boar[0][6] = che[c++];
+		che[c] = new Xiang(9, 2, "HonXi", 1);
+		boar[9][2] = che[c++];
+		che[c] = new Xiang(9, 6, "HnoXi", 1);
+		boar[9][6] = che[c++];
+		
+		che[c] = new Ju(0, 0, "HeiJu", 0);
+		boar[0][0] = che[c++];
+		che[c] = new Ju(0, 8, "HeiJu", 0);
+		boar[0][8] = che[c++];
+		che[c] = new Ju(9, 0, "HonJu", 1);
+		boar[9][0] = che[c++];
+		che[c] = new Ju(9, 8, "HonJu", 1);
+		boar[9][8] = che[c++];
+
+		che[c] = new Ma(0, 1, "HeiMa", 0);
+		boar[0][1] = che[c++];
+		che[c] = new Ma(0, 7, "HeiMa", 0);
+		boar[0][7] = che[c++];
+		che[c] = new Ma(9, 1, "HonMa", 1);
+		boar[9][1] = che[c++];
+		che[c] = new Ma(9, 7, "HonMa", 1);
+		boar[9][7] = che[c++];
+		
+		
+	}
+	
+	static boolean isChe(int a,int b){
+		if(boar[a][b]==null)return false;
+		return true;
+	}
+	
+	static String getName(int a,int b){
+		return boar[a][b].name;
+	}
+	
+	static void setChe(int f1,int f2,int t1,int t2){
+		boar[f1][f2].setLocation(t1, t2);
+		if (boar[f1][f2].getX() != f1
+				|| boar[f1][f2].getY() != f2) {
+			boar[t1][t2] = boar[f1][f2];
+			boar[f1][f2] = che[39];
+			prit();
+		}
+	}
+	
+	static void prit() {
+		int i, j;
+		for (i = 9; i >= 0; i--) {
+			System.out.print(i+" ");
+			for (j = 0; j < 9; j++) {
+				if (boar[i][j] == null)
+					System.out.print("  -   ");
+				else
+					System.out.print(boar[i][j].name + " ");
+			}
+			System.out.println();
+		}
+		System.out.print("SA");
+		for (j = 0; j < 9; j++) {
+			System.out.print("  " + j + "   ");
+		}
+		System.out.println();
+	}
+
+}

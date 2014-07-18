@@ -1,0 +1,44 @@
+import java.io.IOException;
+
+public class Lemon {
+
+	public static void main(String[] args) throws IOException {
+		String ora,orb,na,nb,tra,trb;
+		Integer cnt;
+		BasicFileIo fa = new BasicFileIo();
+		BasicFileIo fb = new BasicFileIo();
+		fa.openFile(BasicFileIo.INPUT, "a");
+		fb.openFile(BasicFileIo.INPUT, "b");
+		for(cnt=0;;){
+			ora = fa.readString();
+			orb = fb.readString();
+			if(ora==null)break;
+			tra = getCanonicalLine(ora);
+			trb = getCanonicalLine(orb);
+			if(tra.equals(trb))continue;
+			cnt++;
+			System.out.println("# " + cnt.toString());
+			System.out.println(ora);
+			System.out.println(orb);
+			System.out.println("");
+		}
+		System.out.println(cnt.toString());
+		
+	}
+	
+	public static String getCanonicalLine (String str){
+		String ans_str = null,s;
+		s = str.trim();
+		int i;
+		boolean f=true;
+		for(i=0;i<s.length();i++){
+			if(!f && s.charAt(i)==' ')continue;
+			if(f && s.charAt(i)==' ' || !f && s.charAt(i)!=' '){
+				f=!f;
+			}
+			ans_str += s.charAt(i);
+		}
+		return ans_str.toLowerCase();
+	}	
+
+}

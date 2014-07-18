@@ -1,0 +1,7 @@
+public interface Movable {
+	boolean setLocation(int x, int y);
+
+	int getXLocation();
+
+	int getYLocation();
+} // end of interface Moveable

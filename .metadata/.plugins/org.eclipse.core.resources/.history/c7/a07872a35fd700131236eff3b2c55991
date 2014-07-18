@@ -1,0 +1,20 @@
+
+public class Ju extends ChessPiece{
+
+	public Ju(int a, int b, String n) {
+		super(a, b, n);
+	}
+	
+	public boolean isLegal(int x,int y,int a,int b) {
+		if(x!=a&&y!=b)return false;
+		int tmp;
+		if(x==a){
+			if(y>b){
+				y=
+			}
+		}
+	}
+	
+	private 
+
+}

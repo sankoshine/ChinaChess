@@ -1,0 +1,47 @@
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Lemon {
+
+	public static void main(String[] args) throws IOException {
+		String ora,orb,na,nb,tra,trb;
+		Integer cnt=0;
+		Scanner in = new Scanner(System.in);
+		System.out.print("File A: ");
+		na = in.next();
+		System.out.print("File B: ");
+		nb = in.next();
+		BasicFileIo fa = new BasicFileIo();
+		BasicFileIo fb = new BasicFileIo();
+		fa.openFile(BasicFileIo.INPUT, na);
+		fb.openFile(BasicFileIo.INPUT, nb);
+		for(;;){
+			ora = fa.readString();
+			orb = fb.readString();
+			if(ora==null)break;
+			tra = getCanonicalLine(ora);
+			trb = getCanonicalLine(orb);
+			if(tra.equals(trb))continue;
+			cnt++;
+			System.out.println("#" + cnt.toString());
+			System.out.println(ora);
+			System.out.println(orb);
+			System.out.println("");
+		}
+		System.out.println("totally " + cnt.toString() + " mismatching lines.");
+		
+	}
+	
+	public static String getCanonicalLine (String str){
+		String ans_str = null,s;
+		s = str.trim();
+		int i;
+		for(i=0;i<s.length();i++){
+			if((s.charAt(i)==' '||s.charAt(i)=='\t')&&(s.charAt(i-1)==' '||s.charAt(i-1)=='\t'))continue;
+			if(s.charAt(i)=='\t')ans_str += ' ';
+			else ans_str += s.charAt(i);
+		}
+		return ans_str.toLowerCase();
+	}	
+
+}
